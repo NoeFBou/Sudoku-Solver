@@ -31,7 +31,7 @@ Clone the repository
   - Each line should contain 9 numbers separated by commas.
 
   ### Example (grid.txt):
-  ``
+  `
   5,3,-1,-1,7,-1,-1,-1,-1
   6,-1,-1,1,9,5,-1,-1,-1
   -1,9,8,-1,-1,-1,-1,6,-1
@@ -41,7 +41,7 @@ Clone the repository
   -1,6,-1,-1,-1,-1,2,8,-1
   -1,-1,-1,4,1,9,-1,-1,5
   -1,-1,-1,-1,8,-1,-1,7,9
-  ``
+  `
 2. Run the solver
   ``python sudoku_solver.py grid.txt``
 
