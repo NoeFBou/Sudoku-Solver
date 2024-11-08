@@ -24,13 +24,14 @@ Clone the repository
   ``
 
 ## Usage
+
 1. Prepare your Sudoku input file
 
   - Create a text file containing the Sudoku puzzle.
   - Use -1 or 0 to represent empty cells.
   - Each line should contain 9 numbers separated by commas.
 
-  ### Example (grid.txt):
+  Example (grid.txt):
   
   `
   5,3,-1,-1,7,-1,-1,-1,-1
