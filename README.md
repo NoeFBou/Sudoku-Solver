@@ -44,13 +44,15 @@ Clone the repository
     0,0,1,0,0,8,4,0,5
   
 2. Run the solver
+   
   ``python sudoku_solver.py grid.txt``
 
-3. Interpreting the output
+4. Interpreting the output
   - If the puzzle is solved successfully, the solved grid will be displayed along with the difficulty level.
   - If user intervention is required, you will be prompted to input a cell index and value.
 
 ## Example
+
   ``python sudoku_solver.py examples/puzzle1.txt``
 
 ## Contributing
