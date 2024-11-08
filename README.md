@@ -45,7 +45,7 @@ Clone the repository
   
 2. Run the solver
    
-  ``python sudoku_solver.py grid.txt``
+  ``python main.py grid.txt``
 
 3. Interpreting the output
   - If the puzzle is solved successfully, the solved grid will be displayed along with the difficulty level.
