@@ -47,7 +47,7 @@ Clone the repository
    
   ``python sudoku_solver.py grid.txt``
 
-4. Interpreting the output
+3. Interpreting the output
   - If the puzzle is solved successfully, the solved grid will be displayed along with the difficulty level.
   - If user intervention is required, you will be prompted to input a cell index and value.
 
