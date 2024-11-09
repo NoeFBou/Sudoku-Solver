@@ -9,6 +9,11 @@ class DR5(DeductionRule):
     Pointing Pairs/Triples: If in a block, all candidates of a number are confined to a single row or column,
     then this candidate can be eliminated from other cells in that row or column outside the block.
     """
+    def __init__(self):
+        """
+        Constructor for the Pointing Pairs/Triples deduction rule.
+        """
+        super().__init__()
 
     def apply(self, grid):
         """
@@ -18,7 +23,6 @@ class DR5(DeductionRule):
         Returns:
             bool: True if any changes were made to the grid, False otherwise.
         """
-
         changed = False
         # Process each block (blocks are units[18:27])
         for block in grid.units[18:27]:

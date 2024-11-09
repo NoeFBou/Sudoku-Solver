@@ -7,12 +7,13 @@ A Python-based Sudoku solver that applies various deduction rules to efficiently
   - Evaluates the difficulty level of the Sudoku puzzle.
   - Allows user intervention when automatic solving is not possible.
   - Provides a clear and formatted output of the solved Sudoku grid.
+  - Example grid are provided in the example folder.
 
 ## Installation
 Clone the repository
 
 1. Copier le code
-  ``git clone https://github.com/yourusername/sudoku-solver.git``
+  ``git clone https://github.com/NoeFBou/Sudoku-Solver.git``
 
 2. Navigate to the project directory
   `` cd sudoku-solver ``
@@ -45,7 +46,7 @@ Clone the repository
   
 2. Run the solver
    
-  ``python Main.py grid.txt``
+  ``python Main.py .\grid.txt``
 
 3. Interpreting the output
   - If the puzzle is solved successfully, the solved grid will be displayed along with the difficulty level.
@@ -53,7 +54,7 @@ Clone the repository
 
 ## Example
 
-  ``python Main.py examples/hard1.txt``
+  ``python Main.py .\example\Hard1.txt``
 
 ## Contributing
 Contributions are welcome! Please open an issue or submit a pull request for any improvements or bug fixes.

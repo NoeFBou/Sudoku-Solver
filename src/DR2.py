@@ -9,6 +9,12 @@ class DR2(DeductionRule):
     Hidden Singles: If a candidate appears only once in a unit, it must be in that cell.
     """
 
+    def __init__(self):
+        """
+        Constructor for the Hidden Singles deduction rule.
+        """
+        super().__init__()
+
     def apply(self, grid):
         """
         Apply the Hidden Singles rule to the Sudoku grid.
@@ -17,7 +23,6 @@ class DR2(DeductionRule):
         Returns:
             bool: True if any changes were made to the grid, False otherwise.
         """
-
         changed = False
         for unit in grid.units:
             counts = {}  # Dictionary to count occurrences of each candidate in the unit

@@ -2,8 +2,8 @@
 # Description: Main script to run the Sudoku solver.
 
 import sys
-from SudokuGrid import SudokuGrid
-from SudokuSolver import SudokuSolver
+
+from SudokuFacade import SudokuFacade
 
 
 def parse_input(file_path):
@@ -16,7 +16,6 @@ def parse_input(file_path):
     Raises:
         ValueError: If the input file does not contain valid Sudoku grid data.
     """
-
     with open(file_path, 'r') as file:
         lines = file.readlines()
     grid_values = []
@@ -43,28 +42,18 @@ def main():
     """
     Main function to run the Sudoku solver.
     """
-
     if len(sys.argv) != 2:
         print("Usage: python sudoku_solver.py <input_file>")
         return
     file_path = sys.argv[1]
     try:
         initial_values = parse_input(file_path)
-        grid = SudokuGrid(initial_values)
-        solver = SudokuSolver(grid)
-        if solver.solve():
-            print("Sudoku solved successfully!")
-            grid.print_grid()
-            difficulty = solver.evaluate_difficulty()
-            print(f"Difficulty Level: {difficulty}")
-            if solver.user_intervened:
-                print("The grid was completed after you manually entered a number.")
-        else:
-            print("Could not solve the Sudoku.")
-            print("Difficulty Level: Very High")
+        # Create a SudokuFacade object and solve the puzzle
+        facade = SudokuFacade(initial_values)
+        facade.solve()
+
     except Exception as e:
         print(f"Error: {e}")
-
 
 if __name__ == "__main__":
     main()

@@ -9,6 +9,12 @@ class DR1(DeductionRule):
     Naked Singles: If a cell has only one possible candidate, it must be that number.
     """
 
+    def __init__(self):
+        """
+        Constructor for the Naked Singles deduction rule.
+        """
+        super().__init__()
+
     def apply(self, grid):
         """
         Apply the Naked Singles rule to the Sudoku grid.
@@ -17,7 +23,6 @@ class DR1(DeductionRule):
         Returns:
             bool: True if any changes were made to the grid, False otherwise.
         """
-
         changed = False
         for index in range(81):
             if grid.cells[index] == -1 and len(grid.candidates[index]) == 1:

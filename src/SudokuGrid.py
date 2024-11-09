@@ -16,7 +16,6 @@ class SudokuGrid(Observable):
             initial_values (list): A list of 81 integers representing the initial cell values.
                                    Use -1 for empty cells.
         """
-
         super().__init__()
         # Copy the initial cell values
         self.cells = initial_values[:]  # List of 81 elements
@@ -35,7 +34,6 @@ class SudokuGrid(Observable):
         Returns:
             list: A list containing all units of the grid.
         """
-
         units = []
         # Generate rows
         rows = [range(i * 9, (i + 1) * 9) for i in range(9)]
@@ -59,7 +57,6 @@ class SudokuGrid(Observable):
         Returns:
             list: A list of sets, where each set contains the indices of the peers for a cell.
         """
-
         peers = [set() for _ in range(81)]
         for index in range(81):
             row = index // 9
@@ -86,7 +83,6 @@ class SudokuGrid(Observable):
         """
         Initialize candidates for each cell based on initial values.
         """
-
         for index, value in enumerate(self.cells):
             if value != -1:
                 # Update candidates for peers when a cell has an initial value
@@ -99,7 +95,6 @@ class SudokuGrid(Observable):
             index (int): The index of the cell (0-80).
             value (int): The value to set (1-9).
         """
-
         self.cells[index] = value
         self.candidates[index] = set()
         # Update candidates for peers
@@ -114,7 +109,6 @@ class SudokuGrid(Observable):
             index (int): The index of the cell that was assigned a value.
             value (int): The value that was assigned to the cell.
         """
-
         for peer in self.peers[index]:
             if value in self.candidates[peer]:
                 self.candidates[peer].discard(value)
@@ -128,14 +122,12 @@ class SudokuGrid(Observable):
         Returns:
             bool: True if all cells are filled, False otherwise.
         """
-
         return all(value != -1 for value in self.cells)
 
     def print_grid(self):
         """
         Print the current state of the Sudoku grid in a readable format.
         """
-
         print('+-------+-------+-------+')
         for i in range(9):
             row = ''

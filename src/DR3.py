@@ -10,6 +10,12 @@ class DR3(DeductionRule):
     eliminated from other cells in the unit.
     """
 
+    def __init__(self):
+        """
+        Constructor for the Naked Pairs deduction rule.
+        """
+        super().__init__()
+
     def apply(self, grid):
         """
         Apply the Naked Pairs rule to the Sudoku grid.

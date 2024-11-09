@@ -9,6 +9,11 @@ class DR4(DeductionRule):
     Hidden Pairs: In a unit (row, column, or block), if two candidates appear only in exactly two cells,
     then other candidates in these cells can be eliminated.
     """
+    def __init__(self):
+        """
+        Constructor for the Hidden Pairs deduction rule.
+        """
+        super().__init__()
 
     def apply(self, grid):
         """
@@ -18,7 +23,6 @@ class DR4(DeductionRule):
         Returns:
             bool: True if any changes were made to the grid, False otherwise.
         """
-
         changed = False
         for unit in grid.units:
             # Build a mapping from candidates to the cells they appear in

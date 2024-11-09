@@ -7,7 +7,9 @@ class Observable:
     """
 
     def __init__(self):
-        """Initialize the Observable with an empty list of observers."""
+        """
+        Initialize the Observable with an empty list of observers
+        """
         self.observers = []
 
     def add_observer(self, observer):
@@ -25,7 +27,6 @@ class Observable:
         Args:
             observer: The observer object to be removed.
         """
-
         if observer in self.observers:
             self.observers.remove(observer)
 

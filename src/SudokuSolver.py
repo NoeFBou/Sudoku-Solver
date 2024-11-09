@@ -15,10 +15,10 @@ class SudokuSolver:
         Args:
             grid (SudokuGrid): The Sudoku grid to solve.
         """
-
-        self._updating = False
+        self._updating = None
         self.grid = grid
-        self.rules = DeductionRuleFactory.create_rules()
+        factory = DeductionRuleFactory()
+        self.rule_chain = factory.create_rules()
         self.used_rules = set()
         self.user_intervened = False
         grid.add_observer(self)
@@ -30,9 +30,8 @@ class SudokuSolver:
             observable (Observable): The observable object.
             event: Optional event data.
         """
-
-        if self._updating:
-            return  # Prevent recursive updates
+        if hasattr(self, '_updating') and self._updating:
+            return
         self._updating = True
         try:
             self.apply_rules()
@@ -43,24 +42,17 @@ class SudokuSolver:
         """
         Apply deduction rules to the grid iteratively until no progress can be made.
         """
-
         while True:
-            progress = False
             # Check for inconsistencies in the grid
             for index in range(81):
                 if self.grid.cells[index] != -1:
                     continue
                 if not self.grid.candidates[index]:
                     raise ValueError("Inconsistency detected in the grid.")
-            # Try applying each deduction rule
-            for rule in self.rules:
-                if rule.apply(self.grid):
-                    # If a rule made changes, note it and break to reapply from the first rule
-                    self.used_rules.add(rule.__class__.__name__)
-                    progress = True
-                    break
-            if not progress:
-                # No rules made progress
+            rule_name = self.rule_chain.handle(self.grid)
+            if rule_name:
+                self.used_rules.add(rule_name)
+            else:
                 if self.grid.is_solved():
                     return True
                 else:
@@ -74,7 +66,6 @@ class SudokuSolver:
         Returns:
             bool: True if solved successfully, False otherwise.
         """
-
         try:
             self.apply_rules()
             return self.grid.is_solved()
@@ -86,7 +77,6 @@ class SudokuSolver:
         """
         Prompt the user to manually input a value when automatic solving is not possible.
         """
-
         self.user_intervened = True  # User intervention occurred
         self.grid.print_grid()
         while True:
@@ -111,7 +101,6 @@ class SudokuSolver:
         Returns:
             str: A string representing the difficulty level.
         """
-
         if not self.grid.is_solved():
             return "Very Hard"
         print(f"Used rules: {self.used_rules}")
